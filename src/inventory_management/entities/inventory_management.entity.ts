@@ -1,0 +1,23 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
+
+export type userDocument = HydratedDocument<InventoryManagement>;
+
+@Schema()
+export class InventoryManagement {
+    @Prop()
+    inventory_id: string
+  
+    @Prop()
+    inventory_name: string;
+  
+    @Prop()
+    product_id: number;
+  
+    @Prop()
+    rack_id: string;
+
+  }
+  
+  export const InventoryManagementSchema = SchemaFactory.createForClass(InventoryManagement);
+
