@@ -29,9 +29,9 @@ export class InventoryManagementController {
 
   @Patch('/update-inventory/:id')
   @MessagePattern('updateInventory')
-  updateUser(payload) { 
+  updateInventory(payload) { 
     console.log(payload) 
-    return this.inventoryManagementService.updateInventory(payload.id, payload.updateUserDto);
+    return this.inventoryManagementService.updateInventory(payload.id, payload.updateInventoryManagementDto);
   }
   
   @Delete('/delete-inventory/:id')
