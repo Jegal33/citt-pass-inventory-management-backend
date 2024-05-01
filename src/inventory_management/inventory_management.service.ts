@@ -9,10 +9,6 @@ import { Model } from 'mongoose';
 export class InventoryManagementService {
   constructor(@InjectModel(InventoryManagement.name) private readonly inventoryManagementModel: Model<InventoryManagement>) {}
 
-  // create(createInventoryManagementDto: CreateInventoryManagementDto) {
-  //   return 'This action adds a new inventoryManagement';
-  // }
-
   async createInventoryManagement(createInventoryManagementDto: CreateInventoryManagementDto): Promise<InventoryManagement> {
     const createdInventoryManagement = new this.inventoryManagementModel(createInventoryManagementDto).save();
     console.log(createInventoryManagementDto)
@@ -20,18 +16,19 @@ export class InventoryManagementService {
   }
 
   async findAllInventories() : Promise<InventoryManagement[]>{
-    return await this.inventoryManagementModel.find().exec();;
+    return await this.inventoryManagementModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} inventoryManagement`;
+  async findOneInventory(id: string): Promise<InventoryManagement> {
+    return await this.inventoryManagementModel.findById(id).exec();
   }
 
-  update(id: number, updateInventoryManagementDto: UpdateInventoryManagementDto) {
-    return `This action updates a #${id} inventoryManagement`;
+  async updateInventory(id: string, updateInventoryManagementDto: UpdateInventoryManagementDto): Promise<InventoryManagement> {
+    return await this.inventoryManagementModel.findByIdAndUpdate(id, updateInventoryManagementDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} inventoryManagement`;
+
+  async removeInventorty(id: string): Promise<InventoryManagement> {
+    return await this.inventoryManagementModel.findByIdAndDelete(id).exec();
   }
 }
