@@ -12,7 +12,7 @@ export class InventoryManagement {
     inventory_name: string;
   
     @Prop()
-    product_id: number;
+    product_id: number[];
   
     @Prop()
     rack_id: string;
