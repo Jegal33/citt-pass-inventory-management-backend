@@ -6,7 +6,7 @@ export type userDocument = HydratedDocument<InventoryManagement>;
 @Schema()
 export class InventoryManagement {
     @Prop()
-    inventory_id: string
+    inventory_id: number
   
     @Prop()
     inventory_name: string;
