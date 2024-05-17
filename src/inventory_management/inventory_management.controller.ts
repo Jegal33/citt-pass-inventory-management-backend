@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { InventoryManagementService } from './inventory_management.service';
 import { CreateInventoryManagementDto } from './dto/create-inventory_management.dto';
 import { UpdateInventoryManagementDto } from './dto/update-inventory_management.dto';
@@ -27,11 +27,11 @@ export class InventoryManagementController {
     return this.inventoryManagementService.findOneInventory(id);
   }
 
-  @Patch('/update-inventory/:id')
+  @Put('/update-inventory/:id')
   @MessagePattern('updateInventory')
-  updateInventory(payload) { 
-    console.log(payload) 
-    return this.inventoryManagementService.updateInventory(payload.id, payload.updateInventoryManagementDto);
+  updateInventory(updateQuery) { 
+    console.log(updateQuery) 
+    return this.inventoryManagementService.updateInventory(updateQuery.id, updateQuery.updateInventoryManagementDto);
   }
   
   @Delete('/delete-inventory/:id')
