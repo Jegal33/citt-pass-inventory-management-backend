@@ -8,7 +8,8 @@ import { MessagePattern } from '@nestjs/microservices';
 export class InventoryManagementController {
   constructor(private readonly inventoryManagementService: InventoryManagementService) {}
 
-
+// cagaron no hice la funcion xdxd// calmao si paso piola en la pega con esta wea abierta
+// a hago ahroa asa tu pc un rato 
   @Post('create-inventory')
   @MessagePattern("createinventory")// se comunica con la api por medio de message pattern
   create(@Body() createInventoryManagementDto: CreateInventoryManagementDto) {
@@ -27,12 +28,17 @@ export class InventoryManagementController {
     return this.inventoryManagementService.findOneInventory(id);
   }
 
+  @MessagePattern('getByRackId')
+  findInventoryByRackId(rack_id: any) {
+    return this.inventoryManagementService.findOneInventorByRackIdy(rack_id);
+  }
+
   @Put('/update-inventory/:id')
   @MessagePattern('updateInventory')
   updateInventory(updateQuery) { 
     console.log(updateQuery) 
     return this.inventoryManagementService.updateInventory(updateQuery.id, updateQuery.updateInventoryManagementDto);
-  }
+  } 
   
   @Delete('/delete-inventory/:id')
   @MessagePattern('removeInventory')

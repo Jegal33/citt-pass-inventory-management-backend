@@ -23,6 +23,10 @@ export class InventoryManagementService {
     return await this.inventoryManagementModel.findById(id).exec();
   }
 
+  async findOneInventorByRackIdy(rack_id: string) {
+    return await this.inventoryManagementModel.find({"rack_id": rack_id}).exec();
+  }
+
   async updateInventory(id: string, updateInventoryManagementDto: UpdateInventoryManagementDto): Promise<InventoryManagement> {
     return await this.inventoryManagementModel.findByIdAndUpdate(id, updateInventoryManagementDto, { new: true }).exec();
   }
