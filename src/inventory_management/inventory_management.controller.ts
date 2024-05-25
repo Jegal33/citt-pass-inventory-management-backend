@@ -14,7 +14,7 @@ export class InventoryManagementController {
   @MessagePattern("createinventory")// se comunica con la api por medio de message pattern
   create(@Body() createInventoryManagementDto: CreateInventoryManagementDto) {
     return this.inventoryManagementService.createInventoryManagement(createInventoryManagementDto);
-  }
+  }   
 
   @Get('/find-all-inventories')
   @MessagePattern("findAllInventories")
